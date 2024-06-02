@@ -11,7 +11,7 @@ import java.security.ProtectionDomain;
 public class AgentTransform implements ClassFileTransformer {
     @Override
     public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer) throws IllegalClassFormatException {
-        className.replace("/",".");
+        className.replace("/",".");//用.来表示className更符合阅读习惯
 
 
         try {
@@ -19,7 +19,7 @@ public class AgentTransform implements ClassFileTransformer {
                 System.out.println("Load class" +className);
                 ClassReader  classReader  = new ClassReader(classfileBuffer);
                 ClassWriter classWriter  = new ClassWriter(classReader, ClassWriter.COMPUTE_MAXS);
-                ClassVisitor classVisitor = new TestClassVisitor(classWriter);
+                ClassVisitor classVisitor = new TestClassVisitor(classWriter);//通过TestClassVisitor来修改字节码
 
                 classReader.accept(classVisitor, ClassReader.EXPAND_FRAMES);
 

@@ -21,8 +21,9 @@ public class TestClassVisitor extends ClassVisitor implements Opcodes {
                 @Override
                 public void visitCode() {
 
-                    mv.visitVarInsn(ALOAD, 0);
-                    mv.visitFieldInsn(GETFIELD, "java/lang/ProcessBuilder", "command", "Ljava/util/List;");
+                    mv.visitVarInsn(ALOAD, 0);//获取this，也就是ProcessBuilder对象里面的那个this
+                    mv.visitFieldInsn(GETFIELD, "java/lang/ProcessBuilder", "command", "Ljava/util/List;");//获取this中的command
+                    //调用我们上面新建的ProcessBuilderHook类中的start方法,将上面拿到的this.command压入我们方法
                     mv.visitMethodInsn(INVOKESTATIC, "org/enjoy/ProcessBuilderHook", "start", "(Ljava/util/List;)V", false);
                     super.visitCode();
                 }
