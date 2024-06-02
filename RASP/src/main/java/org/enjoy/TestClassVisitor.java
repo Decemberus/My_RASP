@@ -1,7 +1,6 @@
 package org.enjoy;
 
 import org.objectweb.asm.ClassVisitor;
-import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.commons.AdviceAdapter;
@@ -17,7 +16,7 @@ public class TestClassVisitor extends ClassVisitor implements Opcodes {
 
         if ("start".equals(name) && "()Ljava/lang/Process;".equals(desc)) {
             System.out.println("the describtion of "+ name +" is " + desc);
-
+            //插入ProcessBuilderHook.start(this.command)
             return new AdviceAdapter(Opcodes.ASM5, mv, access, name, desc) {
                 @Override
                 public void visitCode() {
