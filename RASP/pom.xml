@@ -35,7 +35,7 @@
                 <version>2.3.2</version>
                 <configuration>
                     <archive>
-                        <manifestFile>D:\Code_Project\Java\RASPUsage\src\main\resources\MAINFEST.NF</manifestFile>
+                        <manifestFile>src/main/resources/MAINFEST.NF</manifestFile>
                     </archive>
                 </configuration>
             </plugin>

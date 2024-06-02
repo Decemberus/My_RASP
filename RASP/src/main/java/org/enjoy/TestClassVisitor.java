@@ -31,6 +31,7 @@ public class TestClassVisitor extends ClassVisitor implements Opcodes {
         return mv;
     }
 
+    //拿到攻击者执行的命令的调用栈信息
 //    @Override
 //    public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
 //        MethodVisitor mv = super.visitMethod(access, name, desc, signature, exceptions);
